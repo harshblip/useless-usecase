@@ -1,5 +1,7 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import ChartCard from './ChartCard';
+import { EmbedChart } from './EmbedChart';
 
 function App() {
   const chartOptions = {
@@ -64,18 +66,28 @@ function App() {
       ],
     },
   }
-  
+
   return (
-    <div className="App">
-      <ChartCard
-        chartId={1}
-        option={chartOptions.chart1}
-      />
-      <ChartCard
-        chartId={2}
-        option={chartOptions.chart2}
-      />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div className="p-4">
+              <ChartCard
+                chartId={1}
+                option={chartOptions.chart1}
+              />
+              <ChartCard
+                chartId={2}
+                option={chartOptions.chart2}
+              />
+            </div>
+          }
+        />
+        <Route path="/embed/:chartId" element={<EmbedChart />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

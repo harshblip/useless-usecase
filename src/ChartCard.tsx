@@ -3,7 +3,7 @@ import ReactECharts  from "echarts-for-react";
 export default function ChartCard({ chartId, option }: { chartId: number, option: any }) {
 
     const handleExportClick = () => {
-        const url = `${window.location.origin}/embed/${chartId}`;
+        const url = `https://useless-usecase.vercel.app/embed/${chartId}`;
         navigator.clipboard.writeText(url);
         alert(`Chart URL copied: ${url}`);
     };
